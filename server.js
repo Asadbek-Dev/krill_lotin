@@ -13,9 +13,7 @@ app.engine('.hbs',exphbs({
 }))
 app.set('view engine', '.hbs')
 
-app.get('/',(req,res)=>{
-    res.render('index')
-})
+app.use('/',require('./routes/translate'))
 
 app.listen(3000,()=>{
     console.log('Server running on port:3000');
