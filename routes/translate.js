@@ -17,6 +17,8 @@ async function translateCL(word){
       if(word.hasOwnProperty(i)){
         if(a[word[i]]===undefined){
           result+=word[i]
+        }else{
+          result+=a[word[i]]
         }
       }
     }
@@ -31,9 +33,14 @@ async function translateCL(word){
     console.log(err);
   }
 }
-
 router.get('/',(req,res)=>{
   res.render('index')
+})
+
+router.post('/',async (req,res)=>{
+  const result=await translateCL(req.body.text)
+  console.log(result);
+  res.redirect('/')
 })
 
 module.exports=router
