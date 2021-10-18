@@ -34,11 +34,21 @@ async function translateCL(word){
   }
 }
 router.get('/',(req,res)=>{
-  res.render('index')
+  let original,result;
+  if(req.session.original && req.session.result){
+    original=req.session.original
+    result=req.session.result
+  }
+  res.render('index',{
+    original,
+    result
+  })
 })
 
 router.post('/',async (req,res)=>{
   const result=await translateCL(req.body.text)
+  req.session.original=req.body.text
+  req.session.result=result
   console.log(result);
   res.redirect('/')
 })
