@@ -21,6 +21,12 @@ async function translateCL(word){
     a["t"]="т";a["u"]="у";a["v"]="в";a["x"]="х";a["y"]="й";a["z"]="з";a["ō"]="ў";a["ğ"]="ғ";a["ş"]="ш";a["ć"]="ч";
     for(let i=0;i<word.length;i++){
       if(word.hasOwnProperty(i)){
+        if(word[i]=='s' && word[i+1]==='h'){
+          let changes=word.split('')
+          changes[i]='ş'
+          changes[i+1]=''
+          word=changes.join('')
+        }
         if(a[word[i]]===undefined){
           result+=word[i]
         }else{
