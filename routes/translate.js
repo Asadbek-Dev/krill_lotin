@@ -58,5 +58,4 @@ router.post('/',async (req,res)=>{
   console.log(result);
   res.redirect('/')
 })
-
 module.exports=router
