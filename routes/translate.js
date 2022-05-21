@@ -55,7 +55,6 @@ router.post('/',async (req,res)=>{
   const result=await translateCL(req.body.text)
   req.session.original=req.body.text
   req.session.result=result
-  console.log(result);
   res.redirect('/')
 })
 module.exports=router
